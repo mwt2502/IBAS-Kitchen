@@ -1,26 +1,30 @@
 ﻿@page
-@model IBAS_Kitchen.Pages.IndexModel
-@{
-    ViewData["Title"] = "Kantinens Menu";
-}
+@model IndexModel
 
-<h1>Kantinens Menu</h1>
+<h1>Canteen Menu</h1>
 
 <table>
     <thead>
         <tr>
-            <th>Ret</th>
-            <th>Pris</th>
-            <th>Dag</th>
+            <th>Cold Dish</th>
+            <th>Warm Dish</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.MenuItems)
+        @if (Model.MenuItems != null && Model.MenuItems.Any())
+        {
+            foreach (var item in Model.MenuItems)
+            {
+                <tr>
+                    <td>@item.Colddish</td>
+                    <td>@item.Warmdish</td>
+                </tr>
+            }
+        }
+        else
         {
             <tr>
-                <td>@item.DishName</td>
-                <td>@item.Price.ToString("C")</td>
-                <td>@item.Day</td>
+                <td colspan="2">No menu items available.</td>
             </tr>
         }
     </tbody>
