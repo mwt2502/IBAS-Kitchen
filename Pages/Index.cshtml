@@ -1,10 +1,27 @@
 ﻿@page
-@model IndexModel
+@model IBAS_Kitchen.Pages.IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Kantinens Menu";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>Kantinens Menu</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Ret</th>
+            <th>Pris</th>
+            <th>Dag</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.MenuItems)
+        {
+            <tr>
+                <td>@item.DishName</td>
+                <td>@item.Price.ToString("C")</td>
+                <td>@item.Day</td>
+            </tr>
+        }
+    </tbody>
+</table>
